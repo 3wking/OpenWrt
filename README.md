@@ -7,7 +7,7 @@
 * [X86初始化脚本](https://raw.iqiq.io/3wking/OpenWrt/main/Supes/x86_shell)
 
 ## 本地编译 ：
-* 环境安装
+环境安装：
 ```sh
 wget -O - https://raw.iqiq.io/3wking/OpenWrt/main/Compile/env.sh | bash
 ```
