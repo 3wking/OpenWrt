@@ -56,8 +56,8 @@ Download() (
 	fi
 
 	
-	argon=$(cat $TMPDIR/releases.txt | grep "download_url" | grep luci-theme-argon*.ipk | head -1 | awk '{print $2}' | sed 's/\"//g')
-	argon_config=$(cat $TMPDIR/releases.txt | grep "download_url" | grep luci-app-argon-config*.ipk | head -1 | awk '{print $2}' | sed 's/\"//g')
+	argon=$(cat $TMPDIR/releases.txt | grep "download_url" | grep luci-theme-argon*.ipk | head -1 | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g')
+	argon_config=$(cat $TMPDIR/releases.txt | grep "download_url" | grep luci-app-argon-config*.ipk | head -1 | awk '{print $2}' | sed 's/\"//g'  | sed 's/,//g')
 
 	# download
 	echo -e "${GREEN_COLOR}正在下载 argon ...${RES}"
