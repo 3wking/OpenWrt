@@ -16,7 +16,7 @@ else
 	exit 1
 fi
 #创建临时目录
-dir=$(mktemp -d) || exit 1
+dir=$(mktemp -d) && cd $dir || exit 1
 #设置GitHub加速下载
 ip_info=$(curl -sk https://ip.cooluc.com)
 country_code=$(echo $ip_info | sed -r 's/.*country_code":"([^"]*).*/\1/')
@@ -28,13 +28,13 @@ if [ $country_code = "CN" ]; then
 fi
 # 检查
 Check() (
-	echo -e "\r\n${GREEN_COLOR}正在检查可用空间	...${RES}"
+	echo -e "\r\n${GREEN_COLOR}正在检查可用空间 ...${RES}"
 	ROOT_SPACE=$(df -m /usr | awk 'END{print $4}')
 	if [ $ROOT_SPACE -lt 20 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 系统存储空间小于20MB.${RES}"
 		exit 1;
 	fi
-	echo -e "\r\n${GREEN_COLOR}检查OpenWrt架构  ...${RES}\r\n"
+	echo -e "\r\n${GREEN_COLOR}检查OpenWrt架构 ...${RES}\r\n"
 	prebuilt="aarch64_cortex-a53 aarch64_cortex-a72 aarch64_generic arm_arm1176jzf-s_vfp arm_arm926ej-s arm_cortex-a15_neon-vfpv4 arm_cortex-a5_vfpv4 arm_cortex-a7 arm_cortex-a7_neon-vfpv4 arm_cortex-a8_vfpv3 arm_cortex-a9 arm_cortex-a9_neon arm_cortex-a9_vfpv3-d16 arm_fa526 arm_mpcore arm_xscale i386_pentium-mmx i386_pentium4 mips64_octeonplus mips_24kc mips_4kec mips_mips32 mipsel_24kc mipsel_24kc_24kf mipsel_74kc mipsel_mips32 x86_64"
 	verif=$(expr match "$prebuilt" ".*\($platform\)")
 	if [[ ! $verif ]]; then
@@ -79,21 +79,21 @@ Download() (
 
 	# download
 	echo -e "${GREEN_COLOR}正在下载 dev内核 ...${RES}"
-	curl --connect-timeout 30 -m 600 -kL#o ${dir}/dev.tar.gz "$dev" #$mirror$alist
+	curl --connect-timeout 30 -m 600 -#kLo dev.tar.gz $mirror$dev
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 dev内核 失败.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
 	echo -e "${GREEN_COLOR}正在下载 premium内核 ...${RES}"
-	curl --connect-timeout 30 -m 600 -kL#o ${dir}/premium.gz "$premium" #$mirror$luci_app
+	curl --connect-timeout 30 -m 600 -#kLo premium.gz $mirror$premium
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 premium内核 失败.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
 	echo -e "${GREEN_COLOR}正在下载 meta内核 ...${RES}"
-	curl --connect-timeout 30 -m 600 -kL#o ${dir}/meta.tar.gz "$meta" #$mirror$luci_app
+	curl --connect-timeout 30 -m 600 -#kLo meta.tar.gz $mirror$meta
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 meta内核 失败.${RES}"
 		rm -rf $dir
@@ -105,9 +105,9 @@ Install() (
 	# 安装
 	Core="/etc/openclash/core"
 	echo -e "\r\n${GREEN_COLOR}安装内核中 ...${RES}\r\n"
-	tar -zxf ${dir}/dev*.gz -O > ${Core}/clash && chmod 0755 ${Core}/clash
-	gunzip -c ${dir}/premium.gz > ${Core}/clash_tun && chmod 0755 ${Core}/clash_tun
-	tar -zxf ${dir}/meta*.gz  -O > ${Core}/clash_meta && chmod 0755 ${Core}/clash_meta
+	tar -zxf dev*.gz -O > ${Core}/clash && chmod 0755 ${Core}/clash
+	gunzip -c premium.gz > ${Core}/clash_tun && chmod 0755 ${Core}/clash_tun
+	tar -zxf meta*.gz  -O > ${Core}/clash_meta && chmod 0755 ${Core}/clash_meta
 	rm -rf $dir
 	echo -e "${GREEN_COLOR}安装内核完成!${RES}"
 )
