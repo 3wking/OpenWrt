@@ -29,9 +29,9 @@ curl -k https://raw.iqiq.io/3wking/3wking.github.io/main/OpenWrt/config.sh | bas
 ```sh
 curl -k https://raw.iqiq.io/3wking/OpenWrt/main/Shell/openclash.sh | bash
 ```
-##### argon_安装
+##### aliyundrive-webdav_安装
 ```sh
-curl -k https://raw.iqiq.io/3wking/OpenWrt/main/Shell/argon.sh | bash
+curl -k https://raw.iqiq.io/3wking/OpenWrt/main/Shell/aliyundrive-webdav.sh | bash
 ```
 ##### alist_安装
 ```sh
