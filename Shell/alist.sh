@@ -40,9 +40,8 @@ Check() (
 		exit 1;
 	else
 		echo -e "${GREEN_COLOR}更新opkg来源 ...${RES}"
-		opkg update
+		#opkg update
 		#安装依赖
-		opkg install luci-compat
 	fi
 )
 #下载
