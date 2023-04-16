@@ -59,14 +59,14 @@ Download() (
 	argon_config=$(cat $dir/releases.txt | grep "download_url" | grep "luci-app-argon-config" | head -1 | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g')
 
 	echo -e "${GREEN_COLOR}正在下载 argon ...${RES}"
-	curl --connect-timeout 30 -m 600 -#kLo luci-theme-argon.ipk $mirror$argon
+	curl --connect-timeout 30 -m 600 -#kLO $mirror$argon
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 argon 失败.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
 	echo -e "${GREEN_COLOR}正在下载 argon_config ...${RES}"
-	curl --connect-timeout 30 -m 600 -#kLo luci-app-argon-config.ipk $mirror$argon_config
+	curl --connect-timeout 30 -m 600 -#kLO $mirror$argon_config
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 argon_config 失败.${RES}"
 		rm -rf $dir
@@ -77,8 +77,8 @@ Download() (
 Install() (
 	# 安装
 	echo -e "\r\n${GREEN_COLOR}安装软件包 ...${RES}\r\n"
-	opkg install $dir/luci-theme-argon.ipk
-	opkg install $dir/luci-app-argon-config.ipk
+	opkg install $dir/luci-theme-argon*.ipk
+	opkg install $dir/luci-app-argon-config*.ipk
 	rm -rf $dir /tmp/luci-*
 	echo -e "${GREEN_COLOR}安装完成!${RES}"
 )
