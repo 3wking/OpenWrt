@@ -79,10 +79,9 @@ Download() (
 Install() (
 	# 安装
 	echo -e "\r\n${GREEN_COLOR}安装软件包 ...${RES}\r\n"
-	#opkg install $dir/luci-theme-argon*.ipk
-	#opkg install $dir/luci-app-argon-config*.ipk
-	#rm -rf $dir /tmp/luci-*
-	echo $dir
+	opkg install $dir/luci-theme-argon*.ipk
+	opkg install $dir/luci-app-argon-config*.ipk
+	rm -rf $dir /tmp/luci-*
 	echo -e "${GREEN_COLOR}安装完成!${RES}"
 )
 

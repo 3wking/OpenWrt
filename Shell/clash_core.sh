@@ -104,13 +104,12 @@ Download() (
 Install() (
 	# 安装
 	Core="/etc/openclash/core"
-	echo -e "\r\n${GREEN_COLOR}安装软件包 ...${RES}\r\n"
+	echo -e "\r\n${GREEN_COLOR}安装内核中 ...${RES}\r\n"
 	tar -zxf ${dir}/dev*.gz -O > ${Core}/clash && chmod 0755 ${Core}/clash
 	gunzip -c ${dir}/premium.gz > ${Core}/clash_tun && chmod 0755 ${Core}/clash_tun
 	tar -zxf ${dir}/meta*.gz  -O > ${Core}/clash_meta && chmod 0755 ${Core}/clash_meta
-	echo $dir
-	#rm -rf $dir
-	echo -e "${GREEN_COLOR}安装完成!${RES}"
+	rm -rf $dir
+	echo -e "${GREEN_COLOR}安装内核完成!${RES}"
 )
 
 Check
