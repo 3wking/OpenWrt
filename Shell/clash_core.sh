@@ -79,21 +79,21 @@ Download() (
 
 	# download
 	echo -e "${GREEN_COLOR}正在下载 dev内核 ...${RES}"
-	curl --connect-timeout 30 -m 600 -kL#o ${dir}/dev.tar.gz "$dev" $mirror$alist
+	curl --connect-timeout 30 -m 600 -kL#o ${dir}/dev.tar.gz "$dev" #$mirror$alist
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 dev内核 失败.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
 	echo -e "${GREEN_COLOR}正在下载 premium内核 ...${RES}"
-	curl --connect-timeout 30 -m 600 -kL#o ${dir}/premium.gz "$premium" $mirror$luci_app
+	curl --connect-timeout 30 -m 600 -kL#o ${dir}/premium.gz "$premium" #$mirror$luci_app
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 premium内核 失败.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
 	echo -e "${GREEN_COLOR}正在下载 meta内核 ...${RES}"
-	curl --connect-timeout 30 -m 600 -kL#o ${dir}/meta.tar.gz "$meta" $mirror$luci_app
+	curl --connect-timeout 30 -m 600 -kL#o ${dir}/meta.tar.gz "$meta" #$mirror$luci_app
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 meta内核 失败.${RES}"
 		rm -rf $dir
