@@ -10,7 +10,7 @@ if [ $? -eq 0 ]; then
 	echo -e "${GREEN_COLOR}正在下载 $img ...${RES}"
 	curl --connect-timeout 30 -m 600 -#kLo /www/luci-static/argon/background/Yamato_Kancolle.mp4 "${img}"
 	if [ $? -eq 0 ]; then
-		echo -e "${GREEN_COLOR}安装<argon_img>完成${RES}\r\n"
+		echo -e "\r\n${GREEN_COLOR}安装<argon_img>完成${RES}\r\n"
 	fi	
 else
 	exit 1
