@@ -1,10 +1,19 @@
 # OpenWrt
 
-## supes.top ：
+## 在线编译 ：
 * [在线编译](https://supes.top/)
 * [编译插件](https://raw.iqiq.io/3wking/OpenWrt/main/Supes/app)
 * [ARM初始化脚本](https://raw.iqiq.io/3wking/OpenWrt/main/Supes/arm_shell)
 * [X86初始化脚本](https://raw.iqiq.io/3wking/OpenWrt/main/Supes/x86_shell)
+
+## 本地编译 ：
+* 环境安装
+```sh
+wget -O - https://raw.iqiq.io/3wking/OpenWrt/main/Compile/env.sh | bash
+```
+* [编译教程](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/compile.txt)
+* [OpenWrt插件名](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Pluginqa_Name.txt)
+* [OpenWrt插件管理](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Plug-ina_Manager.txt)
 
 ## Friendlywrt ：
 ##### 精简修改friendlywrt
