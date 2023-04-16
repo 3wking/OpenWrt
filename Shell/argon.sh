@@ -48,30 +48,30 @@ Check() (
 Download() (
 	echo -e "\r\n${GREEN_COLOR}下载软件包 ...${RES}\r\n"
 	# 获取软件包信息
-	curl -sk --connect-timeout 10 "https://api.github.com/repos/3wking/OpenWrt/contents/luci-theme/argon?ref=main" | grep "download_url" | grep "" > $TMPDIR/releases.txt
+	curl -sk --connect-timeout 10 "https://api.github.com/repos/3wking/OpenWrt/contents/luci-theme/argon?ref=main" | grep "download_url" | grep "argon" > $dir/releases.txt
 	if [ $? -ne 0 ]; then
 		echo -e "${RED_COLOR}错误! 无法获取版本信息，请检查网络状态.${RES}"
-		rm -rf $TMPDIR
+		rm -rf $dir
 		exit 1
 	fi
 
 	
-	argon=$(cat $TMPDIR/releases.txt | grep "browser_download_url" | grep grep luci-theme-argon*.ipk | head -1 | awk '{print $2}' | sed 's/\"//g')
-	argon_config=$(cat $TMPDIR/releases.txt | grep "browser_download_url" | grep luci-app-argon-config*.ipk | head -1 | awk '{print $2}' | sed 's/\"//g')
+	argon=$(cat $TMPDIR/releases.txt | grep "download_url" | grep luci-theme-argon*.ipk | head -1 | awk '{print $2}' | sed 's/\"//g')
+	argon_config=$(cat $TMPDIR/releases.txt | grep "download_url" | grep luci-app-argon-config*.ipk | head -1 | awk '{print $2}' | sed 's/\"//g')
 
 	# download
 	echo -e "${GREEN_COLOR}正在下载 argon ...${RES}"
-	curl --connect-timeout 30 -m 600 -kLo "argon" $mirror$alist
+	curl --connect-timeout 30 -m 600 -kL#o "argon" $mirror$alist
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 argon 失败.${RES}"
-		rm -rf $TMPDIR
+		rm -rf $dir
 		exit 1
 	fi
 	echo -e "${GREEN_COLOR}正在下载 argon_config ...${RES}"
-	curl --connect-timeout 30 -m 600 -kLo "$argon_config" $mirror$luci_app
+	curl --connect-timeout 30 -m 600 -kL#o "$argon_config" $mirror$luci_app
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 argon_config 失败.${RES}"
-		rm -rf $TMPDIR
+		rm -rf $dir
 		exit 1
 	fi
 )
@@ -79,9 +79,10 @@ Download() (
 Install() (
 	# 安装
 	echo -e "\r\n${GREEN_COLOR}安装软件包 ...${RES}\r\n"
-	opkg install $TMPDIR/luci-theme-argon*.ipk
-	opkg install $TMPDIR/luci-app-argon-config*.ipk
-	rm -rf $TMPDIR /tmp/luci-*
+	#opkg install $dir/luci-theme-argon*.ipk
+	#opkg install $dir/luci-app-argon-config*.ipk
+	#rm -rf $dir /tmp/luci-*
+	echo $dir
 	echo -e "${GREEN_COLOR}安装完成!${RES}"
 )
 
