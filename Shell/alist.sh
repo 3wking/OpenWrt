@@ -49,16 +49,16 @@ Check() (
 Download() (
 	echo -e "\r\n${GREEN_COLOR}下载软件包 ...${RES}\r\n"
 	# 获取软件包信息
-	curl -sk --connect-timeout 10 "https://api.github.com/repos/sbwml/luci-app-alist/releases" | grep "browser_download_url" > $dir/releases.txt
+	curl -sk --connect-timeout 10 "https://api.github.com/repos/sbwml/luci-app-alist/releases" | grep "browser_download_url" > releases.txt
 	if [ $? -ne 0 ]; then
 		echo -e "${RED_COLOR}错误! 无法获取版本信息，请检查网络状态.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
 
-	alist=$(cat $dir/releases.txt | grep "browser_download_url" | grep $platform.ipk | head -1 | awk '{print $2}' | sed 's/\"//g')
-	luci_app=$(cat $dir/releases.txt | grep "browser_download_url" | grep luci-app-alist_ | head -1 | awk '{print $2}' | sed 's/\"//g')
-	luci_i18n=$(cat $dir/releases.txt | grep "browser_download_url" | grep luci-i18n-alist-zh-cn | head -1 | awk '{print $2}' | sed 's/\"//g')
+	alist=$(cat releases.txt | grep "browser_download_url" | grep $platform.ipk | head -1 | awk '{print $2}' | sed 's/\"//g')
+	luci_app=$(cat releases.txt | grep "browser_download_url" | grep luci-app-alist_ | head -1 | awk '{print $2}' | sed 's/\"//g')
+	luci_i18n=$(cat releases.txt | grep "browser_download_url" | grep luci-i18n-alist-zh-cn | head -1 | awk '{print $2}' | sed 's/\"//g')
 
 	# download
 	echo -e "${GREEN_COLOR}正在下载 $alist ...${RES}"
