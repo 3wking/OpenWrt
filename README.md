@@ -7,13 +7,13 @@
 * [X86初始化脚本](https://raw.iqiq.io/3wking/OpenWrt/main/Supes/x86_shell)
 
 ## Friendlywrt ：
+##### 精简修改friendlywrt
+```sh
+wget -O - https://raw.iqiq.io/3wking/OpenWrt/main/friendlywrt/remove.sh | bash
+```
 ##### 修改配置
 ```sh
 wget -O - https://raw.iqiq.io/3wking/3wking.github.io/main/OpenWrt/config.sh | bash
-```
-##### 精简修改friendlywrt
-```sh
-wget -O - https://raw.iqiq.io/3wking/OpenWrt/main/friendlywrt/remove0.sh | bash
 ```
 
 ## 插件 ：
