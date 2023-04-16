@@ -2,7 +2,6 @@
 RED_COLOR='\e[1;31m' #红色
 GREEN_COLOR='\e[1;32m' #绿色
 RES='\e[0m' #尾
-
 # 读取OpenWrt架构
 if [ -f /etc/openwrt_release ]; then
 	. /etc/openwrt_release
@@ -10,7 +9,7 @@ if [ -f /etc/openwrt_release ]; then
 	platform=$(echo $DISTRIB_ARCH)
 	framework=$(echo $DISTRIB_TARGET | awk -F '/' '{print $2}')
 	if [ ! $framework = "armv8" ];then
-		framework="arm64"
+		cpu="arm64"
 	fi
 else
 	echo -e "${RED_COLOR}错误： 未知的OpenWRT版本${RES}"
@@ -52,49 +51,49 @@ Check() (
 Download() (
 	echo -e "\r\n${GREEN_COLOR}下载软件包 ...${RES}\r\n"
 	# 获取 dev 信息
-	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/dev/dev?ref=core" | grep "download_url" | grep "$framework" > $dir/releases.txt
+	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/dev/dev?ref=core" | grep "download_url" | grep "$cpu" > $dir/releases.txt
 	if [ $? -ne 0 ]; then
-		echo -e "${RED_COLOR}错误! 无法获取版本信息，请检查网络状态.${RES}"
+		echo -e "${RED_COLOR}错误! 无法获取dev内核信息，请检查网络状态.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
-	dev=$(cat $dir/releases.txt | grep "download_url" | head -1 | awk '{print $2}' | sed 's/\"//g')
-	
+	dev=$(cat $dir/releases.txt | grep "download_url" | head -1 | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g')	
+
 	# 获取 premium 信息
-	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/dev/premium?ref=core" | grep "download_url" | grep "$framework" > $dir/releases.txt
+	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/dev/premium?ref=core" | grep "download_url" | grep "$cpu" > $dir/releases.txt
 	if [ $? -ne 0 ]; then
-		echo -e "${RED_COLOR}错误! 无法获取版本信息，请检查网络状态.${RES}"
+		echo -e "${RED_COLOR}错误! 无法获取premium内核信息，请检查网络状态.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
-	premium=$(cat $dir/releases.txt | grep "download_url" | head -1 | awk '{print $2}' | sed 's/\"//g')
+	premium=$(cat $dir/releases.txt | grep "download_url" | head -1 | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g')
 	
 	# 获取 meta内核 信息
-	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/dev/meta?ref=core" | grep "download_url" | grep "$framework" > $dir/releases.txt
+	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/dev/meta?ref=core" | grep "download_url" | grep "$cpu" > $dir/releases.txt
 	if [ $? -ne 0 ]; then
-		echo -e "${RED_COLOR}错误! 无法获取版本信息，请检查网络状态.${RES}"
+		echo -e "${RED_COLOR}错误! 无法获取meta内核信息，请检查网络状态.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
-	meta=$(cat $dir/releases.txt | grep "download_url" | head -1 | awk '{print $2}' | sed 's/\"//g')
+	meta=$(cat $dir/releases.txt | grep "download_url" | head -1 | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g')
 
 	# download
 	echo -e "${GREEN_COLOR}正在下载 dev内核 ...${RES}"
-	curl --connect-timeout 30 -m 600 -kLo dev.tar.gz "$dev" $mirror$alist
+	curl --connect-timeout 30 -m 600 -kL#o ${dir}/dev.tar.gz "$dev" $mirror$alist
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 dev内核 失败.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
 	echo -e "${GREEN_COLOR}正在下载 premium内核 ...${RES}"
-	curl --connect-timeout 30 -m 600 -kLo premium.tar.gz "$premium" $mirror$luci_app
+	curl --connect-timeout 30 -m 600 -kL#o ${dir}/premium.gz "$premium" $mirror$luci_app
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 premium内核 失败.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
 	echo -e "${GREEN_COLOR}正在下载 meta内核 ...${RES}"
-	curl --connect-timeout 30 -m 600 -kLo meta.tar.gz "$meta" $mirror$luci_app
+	curl --connect-timeout 30 -m 600 -kL#o ${dir}/meta.tar.gz "$meta" $mirror$luci_app
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 meta内核 失败.${RES}"
 		rm -rf $dir
@@ -106,10 +105,11 @@ Install() (
 	# 安装
 	Core="/etc/openclash/core"
 	echo -e "\r\n${GREEN_COLOR}安装软件包 ...${RES}\r\n"
-	tar -zxf ${dir}//dev*.gz -O > ${Core}/clash && chmod 0755 ${Core}/clash
-	tar -zxf ${dir}//premium*.gz -O > ${Core}/clash && chmod 0755 ${Core}/clash_tun
-	tar -zxf ${dir}//meta*.gz  -O > ${Core}/clash_meta && chmod 0755 ${Core}/clash_meta
-	rm -rf $dir
+	tar -zxf ${dir}/dev*.gz -O > ${Core}/clash && chmod 0755 ${Core}/clash
+	gunzip -c ${dir}/premium.gz > ${Core}/clash_tun && chmod 0755 ${Core}/clash_tun
+	tar -zxf ${dir}/meta*.gz  -O > ${Core}/clash_meta && chmod 0755 ${Core}/clash_meta
+	echo $dir
+	#rm -rf $dir
 	echo -e "${GREEN_COLOR}安装完成!${RES}"
 )
 
