@@ -40,28 +40,29 @@ Check() (
 		exit 1;
 	else
 		echo -e "${GREEN_COLOR}更新opkg来源 ...${RES}"
-		#opkg update
+		opkg update
 		#安装依赖
+		opkg install luci-compat
 	fi
 )
 #下载
 Download() (
 	echo -e "\r\n${GREEN_COLOR}下载软件包 ...${RES}\r\n"
 	# 获取软件包信息
-	curl -sk --connect-timeout 10 "https://api.github.com/repos/messense/aliyundrive-webdav/releases" | grep "browser_download_url" | grep "ipk"> $dir/releases.txt
+	curl -sk --connect-timeout 10 "https://api.github.com/repos/sbwml/luci-app-alist/releases" | grep "browser_download_url" > $dir/releases.txt
 	if [ $? -ne 0 ]; then
 		echo -e "${RED_COLOR}错误! 无法获取版本信息，请检查网络状态.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
 
-	webdav=$(cat $TMPDIR/releases.txt | grep "browser_download_url" | grep $platform.ipk | head -1 | awk '{print $2}' | sed 's/\"//g')
-	luci_app=$(cat $TMPDIR/releases.txt | grep "browser_download_url" | grep luci-app | head -1 | awk '{print $2}' | sed 's/\"//g')
-	luci_i18n=$(cat $TMPDIR/releases.txt | grep "browser_download_url" | grep luci-i18n | head -1 | awk '{print $2}' | sed 's/\"//g')
+	alist=$(cat $dir/releases.txt | grep "browser_download_url" | grep $platform.ipk | head -1 | awk '{print $2}' | sed 's/\"//g')
+	luci_app=$(cat $dir/releases.txt | grep "browser_download_url" | grep luci-app-alist_ | head -1 | awk '{print $2}' | sed 's/\"//g')
+	luci_i18n=$(cat $dir/releases.txt | grep "browser_download_url" | grep luci-i18n-alist-zh-cn | head -1 | awk '{print $2}' | sed 's/\"//g')
 
 	# download
-	echo -e "${GREEN_COLOR}正在下载 $webdav ...${RES}"
-	curl --connect-timeout 30 -m 600 -#kLO $mirror$webdav
+	echo -e "${GREEN_COLOR}正在下载 $alist ...${RES}"
+	curl --connect-timeout 30 -m 600 -#kLO $mirror$alist
 	if [ $? -ne 0 ]; then
 		echo -e "\r\n${RED_COLOR}错误! 下载 $alist 失败.${RES}"
 		rm -rf $dir
@@ -86,9 +87,9 @@ Download() (
 Install() (
 	# 安装
 	echo -e "\r\n${GREEN_COLOR}安装软件包 ...${RES}\r\n"
-	opkg install aliyundrive-webdav*.ipk
-	opkg install luci-app*.ipk
-	opkg install luci-i18n*.ipk
+	opkg install alist_$platform.ipk
+	opkg install luci-app-alist.ipk
+	opkg install luci-i18n-alist-zh-cn.ipk
 	rm -rf $dir /tmp/luci-*
 	echo -e "${GREEN_COLOR}完成!${RES}"
 )
