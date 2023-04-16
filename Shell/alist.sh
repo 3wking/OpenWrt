@@ -8,6 +8,7 @@ if [ -f /etc/openwrt_release ]; then
 	. /etc/openwrt_release
 	version=$(echo ${DISTRIB_RELEASE%%.*})
 	platform=$(echo $DISTRIB_ARCH)
+	framework=$(echo $DISTRIB_TARGET | awk -F '/' '{print $2}')
 else
 	echo -e "${RED_COLOR}错误： 未知的OpenWRT版本${RES}"
 	exit 1
