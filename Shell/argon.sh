@@ -9,7 +9,7 @@ if [ -f /etc/openwrt_release ]; then
 	version=$(echo ${DISTRIB_RELEASE%%.*})
 	platform=$(echo $DISTRIB_ARCH)
 else
-	echo -e "${RED_COLOR}错误： 未知的OpenWRT版本${RES}"
+	echo -e "\r\n${RED_COLOR}未知的OpenWRT版本!!!${RES}\r\n"
 	exit 1
 fi
 #创建临时目录
@@ -31,14 +31,14 @@ Check() (
 		echo -e "\r\n${RED_COLOR}错误! 系统存储空间小于20MB.${RES}"
 		exit 1;
 	fi
-	echo -e "\r\n${GREEN_COLOR}检查OpenWrt架构 ...${RES}\r\n"
+	echo -e "\r\n${GREEN_COLOR}检查OpenWrt架构 ...${RES}"
 	prebuilt="aarch64_cortex-a53 aarch64_cortex-a72 aarch64_generic arm_arm1176jzf-s_vfp arm_arm926ej-s arm_cortex-a15_neon-vfpv4 arm_cortex-a5_vfpv4 arm_cortex-a7 arm_cortex-a7_neon-vfpv4 arm_cortex-a8_vfpv3 arm_cortex-a9 arm_cortex-a9_neon arm_cortex-a9_vfpv3-d16 arm_fa526 arm_mpcore arm_xscale i386_pentium-mmx i386_pentium4 mips64_octeonplus mips_24kc mips_4kec mips_mips32 mipsel_24kc mipsel_24kc_24kf mipsel_74kc mipsel_mips32 x86_64"
 	verif=$(expr match "$prebuilt" ".*\($platform\)")
 	if [[ ! $verif ]]; then
-		echo -e "${RED_COLOR}错误! \"$platform\" 平台当前不受支持.${RES}"
+		echo -e "\r\n${RED_COLOR}错误! \"$platform\" 平台当前不受支持.${RES}"
 		exit 1;
 	else
-		echo -e "${GREEN_COLOR}更新opkg来源 ...${RES}"
+		#echo -e "\r\n${GREEN_COLOR}更新opkg来源 ...${RES}"
 		#opkg update
 		#安装依赖
 		
@@ -50,7 +50,7 @@ Download() (
 	# 获取软件包信息
 	curl -sk --connect-timeout 10 "https://api.github.com/repos/3wking/OpenWrt/contents/luci-theme/argon?ref=main" | grep "download_url" | grep "argon" > $dir/releases.txt
 	if [ $? -ne 0 ]; then
-		echo -e "${RED_COLOR}错误! 无法获取版本信息，请检查网络状态.${RES}"
+		echo -e "${RED_COLOR}错误! 无法获取版本信息，请检查网络状态.${RES}\r\n"
 		rm -rf $dir
 		exit 1
 	fi
@@ -59,17 +59,17 @@ Download() (
 	argon=$(cat $dir/releases.txt | grep "download_url" | grep "luci-theme-argon" | head -1 | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g')
 	argon_config=$(cat $dir/releases.txt | grep "download_url" | grep "luci-app-argon-config" | head -1 | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g')
 
-	echo -e "${GREEN_COLOR}正在下载 argon ...${RES}"
+	echo -e "${GREEN_COLOR}正在下载 $argon ...${RES}"
 	curl --connect-timeout 30 -m 600 -#kLO $mirror$argon
 	if [ $? -ne 0 ]; then
-		echo -e "\r\n${RED_COLOR}错误! 下载 argon 失败.${RES}"
+		echo -e "${RED_COLOR}下载 $argon 失败.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
-	echo -e "${GREEN_COLOR}正在下载 argon_config ...${RES}"
+	echo -e "${GREEN_COLOR}正在下载 $argon_config ...${RES}"
 	curl --connect-timeout 30 -m 600 -#kLO $mirror$argon_config
 	if [ $? -ne 0 ]; then
-		echo -e "\r\n${RED_COLOR}错误! 下载 argon_config 失败.${RES}"
+		echo -e "${RED_COLOR}下载 $argon_config 失败.${RES}"
 		rm -rf $dir
 		exit 1
 	fi
@@ -81,7 +81,7 @@ Install() (
 	opkg install $dir/luci-theme-argon*.ipk
 	opkg install $dir/luci-app-argon-config*.ipk
 	rm -rf $dir /tmp/luci-*
-	echo -e "${GREEN_COLOR}安装完成!${RES}"
+	echo -e "\r\n${GREEN_COLOR}安装完成!${RES}\r\n"
 )
 
 Check
