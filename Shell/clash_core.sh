@@ -9,7 +9,7 @@ if [ -f /etc/openwrt_release ]; then
 	version=$(echo ${DISTRIB_RELEASE%%.*})
 	platform=$(echo $DISTRIB_ARCH)
 	framework=$(echo $DISTRIB_TARGET | awk -F '/' '{print $2}')
-	if [ ! $framework = "armv8" ];then
+	if [ $framework = "armv8" ];then
 		cpu="arm64"
 	fi
 else
@@ -40,15 +40,7 @@ Check() (
 	verif=$(expr match "$prebuilt" ".*\($platform\)")
 	if [[ ! $verif ]]; then
 		echo -e "${RED_COLOR}错误! \"$platform\" 平台当前不受支持.${RES}\r\n"
-<<<<<<< HEAD
 		exit 1;
-	else
-		#echo -e "${GREEN_COLOR}更新opkg来源 ...${RES}"
-		#opkg update
-		#安装依赖
-=======
-		exit 1		
->>>>>>> 1c7c1c958e41f2c7ac75fcff66cc1edc95ec6dee
 	fi
 )
 #下载
