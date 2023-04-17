@@ -91,7 +91,7 @@ Install() (
 	opkg install luci-app*.ipk
 	opkg install luci-i18n*.ipk
 	rm -rf $dir /tmp/luci-*
-	echo -e "${GREEN_COLOR}完成!${RES}"
+	echo -e "\r\n${GREEN_COLOR}完成!${RES}"
 )
 
 
