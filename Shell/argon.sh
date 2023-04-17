@@ -26,9 +26,9 @@ fi
 # 检查
 Check() (
 	echo -e "\r\n${GREEN_COLOR}正在检查可用空间 ...${RES}"
-	ROOT_SPACE=$(df -m /usr | awk 'END{print $4}')
-	if [ $ROOT_SPACE -lt 20 ]; then
-		echo -e "\r\n${RED_COLOR}错误! 系统存储空间小于20MB.${RES}\r\n"
+	ROOT_SPACE=$(df -m /www | awk 'END{print $4}')
+	if [ $ROOT_SPACE -lt 1 ]; then
+		echo -e "\r\n${RED_COLOR}错误! 系统存储空间小于1MB.${RES}\r\n"
 		exit 1;
 	fi
 	echo -e "\r\n${GREEN_COLOR}检查OpenWrt架构 ...${RES}"
