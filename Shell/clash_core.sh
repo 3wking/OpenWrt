@@ -45,7 +45,6 @@ Check() (
 		#echo -e "${GREEN_COLOR}更新opkg来源 ...${RES}"
 		#opkg update
 		#安装依赖
-		
 	fi
 )
 #下载

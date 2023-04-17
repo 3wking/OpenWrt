@@ -27,7 +27,7 @@ curl -k https://raw.iqiq.io/3wking/3wking.github.io/main/OpenWrt/config.sh | bas
 ## 插件 ：
 ##### Openclash_内核安装
 ```sh
-curl -k https://raw.iqiq.io/3wking/OpenWrt/main/Shell/openclash.sh | bash
+curl -k https://raw.iqiq.io/3wking/OpenWrt/main/Shell/clash_core.sh | bash
 ```
 ##### aliyundrive-webdav_安装
 ```sh
