@@ -13,7 +13,7 @@ if [ -f /etc/openwrt_release ]; then
 		cpu="arm64"
 	fi
 else
-	echo -e "${RED_COLOR}错误： 未知的OpenWRT版本${RES}"
+	echo -e "\r\n${RED_COLOR}未知的OpenWRT版本!!!${RES}\r\n"
 	exit 1
 fi
 #创建临时目录
@@ -30,19 +30,19 @@ fi
 # 检查
 Check() (
 	echo -e "\r\n${GREEN_COLOR}正在检查可用空间 ...${RES}"
-	ROOT_SPACE=$(df -m /usr | awk 'END{print $4}')
-	if [ $ROOT_SPACE -lt 20 ]; then
-		echo -e "\r\n${RED_COLOR}错误! 系统存储空间小于20MB.${RES}"
+	ROOT_SPACE=$(df -m /etc | awk 'END{print $4}')
+	if [ $ROOT_SPACE -lt 15 ]; then
+		echo -e "\r\n${RED_COLOR}错误! 系统存储空间小于15MB.${RES}\r\n"
 		exit 1;
 	fi
-	echo -e "\r\n${GREEN_COLOR}检查OpenWrt架构 ...${RES}\r\n"
+	echo -e "\r\n${GREEN_COLOR}检查OpenWrt架构 ...${RES}"
 	prebuilt="aarch64_cortex-a53 aarch64_cortex-a72 aarch64_generic arm_arm1176jzf-s_vfp arm_arm926ej-s arm_cortex-a15_neon-vfpv4 arm_cortex-a5_vfpv4 arm_cortex-a7 arm_cortex-a7_neon-vfpv4 arm_cortex-a8_vfpv3 arm_cortex-a9 arm_cortex-a9_neon arm_cortex-a9_vfpv3-d16 arm_fa526 arm_mpcore arm_xscale i386_pentium-mmx i386_pentium4 mips64_octeonplus mips_24kc mips_4kec mips_mips32 mipsel_24kc mipsel_24kc_24kf mipsel_74kc mipsel_mips32 x86_64"
 	verif=$(expr match "$prebuilt" ".*\($platform\)")
 	if [[ ! $verif ]]; then
-		echo -e "${RED_COLOR}错误! \"$platform\" 平台当前不受支持.${RES}"
+		echo -e "${RED_COLOR}错误! \"$platform\" 平台当前不受支持.${RES}\r\n"
 		exit 1;
 	else
-		echo -e "${GREEN_COLOR}更新opkg来源 ...${RES}"
+		#echo -e "${GREEN_COLOR}更新opkg来源 ...${RES}"
 		#opkg update
 		#安装依赖
 		
@@ -82,21 +82,21 @@ Download() (
 	echo -e "${GREEN_COLOR}正在下载 $dev ...${RES}"
 	curl --connect-timeout 30 -m 600 -#kLo dev.tar.gz $mirror$dev
 	if [ $? -ne 0 ]; then
-		echo -e "\r\n${RED_COLOR}错误! 下载 $dev 失败.${RES}"
+		echo -e "${RED_COLOR}错误! 下载 $dev 失败.${RES}\r\n"
 		rm -rf $dir
 		exit 1
 	fi
 	echo -e "${GREEN_COLOR}正在下载 $premium ...${RES}"
 	curl --connect-timeout 30 -m 600 -#kLo premium.gz $mirror$premium
 	if [ $? -ne 0 ]; then
-		echo -e "\r\n${RED_COLOR}错误! 下载 $premium 失败.${RES}"
+		echo -e "${RED_COLOR}错误! 下载 $premium 失败.${RES}\r\n"
 		rm -rf $dir
 		exit 1
 	fi
 	echo -e "${GREEN_COLOR}正在下载 $meta ...${RES}"
 	curl --connect-timeout 30 -m 600 -#kLo meta.tar.gz $mirror$meta
 	if [ $? -ne 0 ]; then
-		echo -e "\r\n${RED_COLOR}错误! 下载 $meta 失败.${RES}"
+		echo -e "${RED_COLOR}错误! 下载 $meta 失败.${RES}\r\n"
 		rm -rf $dir
 		exit 1
 	fi
@@ -110,7 +110,7 @@ Install() (
 	gunzip -c premium.gz > ${Core}/clash_tun && chmod 0755 ${Core}/clash_tun
 	tar -zxf meta*.gz  -O > ${Core}/clash_meta && chmod 0755 ${Core}/clash_meta
 	rm -rf $dir
-	echo -e "${GREEN_COLOR}安装内核完成!${RES}"
+	echo -e "\r\n${GREEN_COLOR}安装内核完成!${RES}\r\n"
 )
 
 Check
