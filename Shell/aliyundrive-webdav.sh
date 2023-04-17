@@ -50,7 +50,7 @@ Download() (
 	# 获取软件包信息
 	curl -sk --connect-timeout 10 "https://api.github.com/repos/messense/aliyundrive-webdav/releases" | grep "browser_download_url" | grep "ipk"> releases.txt
 	if [ $? -ne 0 ]; then
-		echo -e "${RED_COLOR}错误! 无法获取版本信息，请检查网络状态.${RES}\r\n"
+		echo -e "${RED_COLOR}无法获取版本信息，请检查网络状态.${RES}\r\n"
 		rm -rf $dir
 		exit 1
 	fi
