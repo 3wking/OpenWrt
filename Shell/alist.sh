@@ -87,9 +87,9 @@ Download() (
 Install() (
 	# 安装
 	echo -e "\r\n${GREEN_COLOR}安装软件包 ...${RES}\r\n"
-	opkg install alist_$platform.ipk
-	opkg install luci-app-alist.ipk
-	opkg install luci-i18n-alist-zh-cn.ipk
+	opkg install alist*.ipk
+	opkg install luci-app*.ipk
+	opkg install luci-i18n*.ipk
 	rm -rf $dir /tmp/luci-*
 	echo -e "${GREEN_COLOR}完成!${RES}"
 )
