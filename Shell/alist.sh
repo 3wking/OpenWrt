@@ -10,7 +10,7 @@ if [ -f /etc/openwrt_release ]; then
 	platform=$(echo $DISTRIB_ARCH)
 	framework=$(echo $DISTRIB_TARGET | awk -F '/' '{print $2}')
 else
-	echo -e "\r\n${RED_COLOR}错误： 未知的OpenWRT版本${RES}\r\n"
+	echo -e "\r\n${RED_COLOR}未知的OpenWRT版本!!!${RES}\r\n"
 	exit 1
 fi
 #创建临时目录
