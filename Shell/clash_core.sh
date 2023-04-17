@@ -40,12 +40,7 @@ Check() (
 	verif=$(expr match "$prebuilt" ".*\($platform\)")
 	if [[ ! $verif ]]; then
 		echo -e "${RED_COLOR}错误! \"$platform\" 平台当前不受支持.${RES}\r\n"
-		exit 1;
-	else
-		#echo -e "${GREEN_COLOR}更新opkg来源 ...${RES}"
-		#opkg update
-		#安装依赖
-		
+		exit 1		
 	fi
 )
 #下载
