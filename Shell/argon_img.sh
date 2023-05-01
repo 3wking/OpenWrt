@@ -11,7 +11,7 @@ Check() (
 		echo -e "\r\n${RED_COLOR}错误! 系统存储空间小于20MB.${RES}\r\n"
 		exit 1;
 	fi
-）
+)
 Install() (
 echo -e "\r\n${GREEN_COLOR}安装<argon_img>图片${RES}\r\n"
 img="https://raw.iqiq.io/3wking/3wking.github.io/main/OpenWrt/IMG/Yamato_Kancolle.mp4"
