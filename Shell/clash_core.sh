@@ -47,7 +47,7 @@ Check() (
 Download() (
 	echo -e "\r\n${GREEN_COLOR}下载软件包 ...${RES}\r\n"
 	# 获取 dev 信息
-	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/dev/dev?ref=core" | grep "download_url" | grep "$cpu" > releases.txt
+	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/master/dev?ref=core" | grep "download_url" | grep "$cpu" > releases.txt
 	if [ $? -ne 0 ]; then
 		echo -e "${RED_COLOR}错误! 无法获取dev内核信息，请检查网络状态.${RES}"
 		rm -rf $dir
@@ -56,7 +56,7 @@ Download() (
 	dev=$(cat releases.txt | grep "download_url" | head -1 | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g')	
 
 	# 获取 premium 信息
-	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/dev/premium?ref=core" | grep "download_url" | grep "$cpu" > releases.txt
+	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/master/premium?ref=core" | grep "download_url" | grep "$cpu" > releases.txt
 	if [ $? -ne 0 ]; then
 		echo -e "${RED_COLOR}错误! 无法获取premium内核信息，请检查网络状态.${RES}"
 		rm -rf $dir
@@ -65,7 +65,7 @@ Download() (
 	premium=$(cat releases.txt | grep "download_url" | head -1 | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g')
 	
 	# 获取 meta内核 信息
-	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/dev/meta?ref=core" | grep "download_url" | grep "$cpu" > releases.txt
+	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/master/meta?ref=core" | grep "download_url" | grep "$cpu" > releases.txt
 	if [ $? -ne 0 ]; then
 		echo -e "${RED_COLOR}错误! 无法获取meta内核信息，请检查网络状态.${RES}"
 		rm -rf $dir
