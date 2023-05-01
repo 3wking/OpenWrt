@@ -302,8 +302,16 @@ EOF
 
 #========LED========
 echo ledtrig-netdev > /etc/modules.d/led-for-r6s && ln -s /etc/modules.d/led-for-r6s /etc/modules-boot.d/led-for-r6s && modprobe ledtrig-netdev
+if grep -q "list mode 'link'" $LED; then
+	sed -i "/list mode 'link'/d" $LED
+	fi	
+if ! grep -q "list mode 'tx'" $LED; then
+	sed -i "/	option dev 'eth[0-9]'/a\	list mode 'tx'" $LED
+	fi
+if ! grep -q "list mode 'rx'" $LED; then
+	sed -i "/list mode 'tx'/a\	list mode 'tx'" $LED
+	fi	
 cat >>$LED<<EOF
-
 config led
 	option sysfs 'sys_led'
 	option trigger 'none'
