@@ -19,7 +19,7 @@ passwd admin
 后面加入一行，写入刚才你建立的用户名：
 admin ALL=(ALL:ALL) ALL
 命令：
-sed -i "/root	ALL=(ALL:ALL) ALL/a\admin ALL=(ALL:ALL) ALL" /etc/sudoers
+sed -i '/root\tALL=(ALL:ALL) ALL/a\admin\tALL=(ALL:ALL) ALL' /etc/sudoers
 
 进入用户：
 su admin
