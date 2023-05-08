@@ -92,30 +92,30 @@ root:$1$Ob2V/c3A$HdzeMqZZCxfbG.6X8PjL..:19036:0:99999:7:::
 ```
 ###### 更改IP:
 ```sh
-sed -i 's/192.168.1.1/10.10.10.254/g' lede/package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/10.10.10.254/g' /lede/package/base-files/files/bin/config_generate
 ```
 ###### 更改主机名:
 ```sh
-sed -i 's/'OpenWrt'/'3wking'/g' lede/package/base-files/files/bin/config_generate
+sed -i 's/'OpenWrt'/'3wking'/g' /lede/package/base-files/files/bin/config_generate
 ```
 ###### 更改主题:
 ```sh
-ed -i 's/luci-theme-bootstrap/luci-theme-argon/g' lede/feeds/luci/collections/luci/Makefile
+ed -i 's/luci-theme-bootstrap/luci-theme-argon/g' /lede/feeds/luci/collections/luci/Makefile
 ```
 ###### 修改固件默认中文:
 ```
-目录：lede/feeds/luci/modules/luci-base/root/etc/config
+目录：/lede/feeds/luci/modules/luci-base/root/etc/config
 option lang auto 改成 option lang zh_cn
 ```
 ###### 修改无线名称:
 ```
-目录：lede/package/kernel/mac80211/files/lib/wifi/mac80211.sh
+目录：/lede/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 ```
 ###### 定制shell登陆后的欢迎信息:
 ```
 定制shell登陆后的欢迎信息：
 定制网址：http://patorjk.com/software/taag/#p=display&f=Big%20Money-nw&t=3WKING
-目录：lede/package/base-files/files/etc/banner：
+目录：/lede/package/base-files/files/etc/banner：
 
 ```
 ```
