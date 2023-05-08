@@ -36,7 +36,7 @@ sudo chmod 777 immortalwrt
 拉取源码
 git clone https://github.com/coolsnowwolf/lede
 git clone -b openwrt-18.06 --single-branch https://github.com/immortalwrt/immortalwrt
-
+git clone -b ipq50xx-qsdk-kernel-5.4-openwrt-21.02-qsdk-11.5.05.841.1029 https://github.com/hzyitc/openwrt-redmi-ax3000
 若你是想在固件里面拥有SSR PLUS或是其他VPN插件，请在SSH工具里面找到如下文件 /lede/feeds.conf.default：
 src-git kenzo https://github.com/kenzok8/openwrt-packages
 src-git small https://github.com/kenzok8/small
