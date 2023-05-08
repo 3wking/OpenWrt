@@ -77,6 +77,16 @@ cd / && cd openwrt-redmi-ax3000
 ```
 ###### 选择插件:
 ```sh
+echo "CONFIG_TARGET_ipq50xx=y" > .config
+echo "CONFIG_TARGET_ipq50xx_arm=y" >> .config
+echo "CONFIG_TARGET_ipq50xx_arm_DEVICE_redmi_ax3000=y" >> .config
+echo "" >> .config
+echo "CONFIG_PACKAGE_kmod-qca-nss-ecm-standard=y" >> .config
+echo "CONFIG_PACKAGE_kmod-qca-nss-drv-pppoe=n" >> .config
+echo "" >> .config
+echo "CONFIG_PACKAGE_luci=y" >> .config
+```
+```sh
 make menuconfig
 ```
 ###### 下载dll库:
