@@ -40,18 +40,6 @@ sudo apt-get update && sudo apt-get -y install build-essential asciidoc binutils
 ```sh
 su admin
 ```
-###### 进入用户:
-```sh
-su admin
-```
-###### 进入用户:
-```sh
-su admin
-```
-###### 更新系统:
-```sh
-sudo apt-get update
-```
 ###### 创建文件夹:
 ```sh
 cd /
