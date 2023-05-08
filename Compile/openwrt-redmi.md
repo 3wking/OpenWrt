@@ -40,7 +40,10 @@ sudo apt install build-essential clang flex g++ gawk gcc-multilib gettext \
 ```
 ###### coccinelle：
 ```sh
-echo "deb https://ppa.launchpadcontent.net/npalix/coccinelle/ubuntu focal main" >> /etc/apt/sources.list.d/coccinelle.list
+sudo add-apt-repository ppa:npalix/coccinelle
+```
+```sh
+echo "deb https://ppa.launchpadcontent.net/npalix/coccinelle/ubuntu focal main" > /etc/apt/sources.list.d/coccinelle.list
 echo "deb-src https://ppa.launchpadcontent.net/npalix/coccinelle/ubuntu focal main" >> /etc/apt/sources.list.d/coccinelle.list
 ```
 ###### 进入用户:
