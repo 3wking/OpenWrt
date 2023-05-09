@@ -47,7 +47,7 @@ sudo add-apt-repository ppa:npalix/coccinelle
 echo "deb https://ppa.launchpadcontent.net/npalix/coccinelle/ubuntu focal main" > /etc/apt/sources.list.d/coccinelle.list
 echo "deb-src https://ppa.launchpadcontent.net/npalix/coccinelle/ubuntu focal main" >> /etc/apt/sources.list.d/coccinelle.list
 ```
-#### 开始编译
+#### 编译
 ###### 进入用户:
 ```sh
 su admin
@@ -58,9 +58,12 @@ cd /
 sudo mkdir openwrt-redmi-ax3000
 sudo chmod 777 openwrt-redmi-ax3000
 ```
-##### 拉取源码:
+###### 拉取源码:
 ```sh
 git clone https://github.com/hzyitc/openwrt-redmi-ax3000
+```
+```sh
+git clone -b <分支> https://github.com/hzyitc/openwrt-redmi-ax3000
 ```
 ###### 添加其他插件源:
 ```sh
@@ -69,6 +72,10 @@ echo "src-git small8 https://github.com/kenzok8/small-package" >> /openwrt-redmi
 ###### 进入目录:
 ```sh
 cd / && cd openwrt-redmi-ax3000
+```
+###### 更新源码:
+```sh
+git pull
 ```
 ###### 更新插件源:
 ```sh
