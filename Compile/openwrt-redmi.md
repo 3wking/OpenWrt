@@ -1,6 +1,7 @@
 # 编译openwrt-redmi-ax3000
 ## PVE编译openwrt-redmi-ax3000
-###### 开启ssh:
+#### liunx环境
+####### 开启ssh:
 ```sh
 sed -i 's/^#Port 22/Port 22/' /etc/ssh/sshd_config
 sed -i 's/^#PermitRootLogin/PermitRootLogin/' /etc/ssh/sshd_config
@@ -9,36 +10,36 @@ sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 reboot
 ```
-###### 创建用户:
+####### 创建用户:
 ```sh
 useradd admin
 ```
-###### 创建密码:
+####### 创建密码:
 ```sh
 passwd admin
 ```
-###### 添加权限:
+####### 添加权限:
 ```
 找到以下文件 /etc/sudoers 
 找到 root	ALL=(ALL:ALL) ALL
 后面加入一行，写入刚才你建立的用户名：
 admin ALL=(ALL:ALL) ALL
 ```
-######## 命令:
+######### 命令:
 ```sh
 sed -i '/root\tALL=(ALL:ALL) ALL/a\admin\tALL=(ALL:ALL) ALL' /etc/sudoers
 ```
-###### 更新系统:
+####### 更新系统:
 ```sh
 sudo apt-get update
 ```
-###### 安装环境:
+####### 安装环境:
 ```sh
 sudo apt install build-essential clang flex g++ gawk gcc-multilib gettext \
   git libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev \
   coccinelle
 ```
-###### coccinelle：
+####### coccinelle：
 ```sh
 sudo add-apt-repository ppa:npalix/coccinelle
 ```
@@ -46,7 +47,8 @@ sudo add-apt-repository ppa:npalix/coccinelle
 echo "deb https://ppa.launchpadcontent.net/npalix/coccinelle/ubuntu focal main" > /etc/apt/sources.list.d/coccinelle.list
 echo "deb-src https://ppa.launchpadcontent.net/npalix/coccinelle/ubuntu focal main" >> /etc/apt/sources.list.d/coccinelle.list
 ```
-###### 进入用户:
+## 开始编译
+####### 进入用户:
 ```sh
 su admin
 ```
