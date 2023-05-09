@@ -58,7 +58,7 @@ cd /
 sudo mkdir openwrt-redmi-ax3000
 sudo chmod 777 openwrt-redmi-ax3000
 ```
-###### 拉取源码:
+##### 拉取源码:
 ```sh
 git clone https://github.com/hzyitc/openwrt-redmi-ax3000
 ```
@@ -103,7 +103,7 @@ make -j1 V=s	# 单核编译(第一次)
 make -j$(($(nproc) + 1)) V=s	# 多核编译(第2次)
 ```
 
-## 额外修改：
+#### 额外修改：
 ###### 添加密码:
 ```sh
 echo "root:$1$Ob2V/c3A$HdzeMqZZCxfbG.6X8PjL..:19036:0:99999:7:::" >> /openwrt-redmi-ax3000/package/base-files/files/etc/shadow
