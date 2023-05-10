@@ -20,7 +20,7 @@ passwd admin
 ```
 ###### 创建用户和密码:
 ```sh
-useradd admin && echo 123456 | passwd admin --stdin		#密码：123456 
+useradd admin &&(echo admin:123456 | chpasswd)  #密码：123456 
 ```
 ###### 添加权限:
 ```sh
