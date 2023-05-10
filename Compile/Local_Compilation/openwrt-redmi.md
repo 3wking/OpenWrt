@@ -108,14 +108,18 @@ make menuconfig
 ```
 ###### 下载dll库:
 ```sh
-make -j8 download V=s
+make download -j$(nproc) V=s
 ```
 ###### 编译源码:
 ```sh
 make -j1 V=s	# 单核编译(第一次)
 ```
 ```sh
-make -j$(($(nproc) + 1)) V=s	# 多核编译(第2次)
+make -j$(nproc) V=s	# 多核编译(第2次)
+```
+###### 重新配置：
+```sh
+rm -rf ./tmp && rm -rf .config
 ```
 
 #### 额外修改
