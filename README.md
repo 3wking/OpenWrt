@@ -3,8 +3,8 @@
 #### 
 * [在线编译](https://supes.top/)
 * [编译插件](https://raw.iqiq.io/3wking/OpenWrt/main/Supes/app)
-* [ARM初始化脚本](https://raw.iqiq.io/3wking/OpenWrt/main/Supes/arm_shell)
-* [X86初始化脚本](https://raw.iqiq.io/3wking/OpenWrt/main/Supes/x86_shell)
+* [ARM初始化脚本](https://github.com/3wking/Private/blob/main/OpenWrt/config/arm_shell.md)
+* [X86初始化脚本](https://github.com/3wking/Private/blob/main/OpenWrt/config/x86_shell.md)
 
 ## 本地编译 ：
 #### 环境安装：
