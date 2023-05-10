@@ -100,7 +100,7 @@ make -j1 V=s	# 单核编译(第一次)
 make -j$(($(nproc) + 1)) V=s	# 多核编译(第2次)
 ```
 
-## 额外修改：
+## 额外修改
 ###### 添加密码:
 ```sh
 echo "root:$1$Ob2V/c3A$HdzeMqZZCxfbG.6X8PjL..:19036:0:99999:7:::" >> /immortalwrt/package/base-files/files/etc/shadow
