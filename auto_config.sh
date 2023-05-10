@@ -11,9 +11,9 @@ start() {
 			echo 检测网络正常
 			#启动的命令
 			wget -O - https://raw.iqiq.io/3wking/3wking.github.io/main/OpenWrt/openclash.sh | bash
-			
-			
-			break
+			if [ $? -eq 0 ];then
+				break
+			fi
 		else
 			echo 检测网络连接异常
 		fi
