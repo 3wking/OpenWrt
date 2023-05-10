@@ -1,5 +1,6 @@
 # 编译immortalwrt
 ## PVE编译immortalwrt
+#### liunx环境
 ###### 开启ssh:
 ```sh
 sed -i 's/^#Port 22/Port 22/' /etc/ssh/sshd_config
