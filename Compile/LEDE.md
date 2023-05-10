@@ -27,7 +27,7 @@ admin ALL=(ALL:ALL) ALL
 ```
 ######## 命令:
 ```sh
-sed -i '/root\tALL=(ALL:ALL) ALL/a\admin\tALL=(ALL:ALL) ALL' /etc/sudoers
+sed -i '/root\tALL=(ALL:ALL) ALL/a\admin\tALL=(ALL) NOPASSWD:ALL' /etc/sudoers
 ```
 ###### 更新系统:
 ```sh
