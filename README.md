@@ -1,7 +1,7 @@
 # OpenWrt
 ## 在线编译 ：
-#### 在线编译教程：
-* [编译插件](https://github.com/3wking/OpenWrt/blob/main/Compile/Online_Compilation/README.md)
+#### 
+* [在线编译教程](https://github.com/3wking/OpenWrt/blob/main/Compile/Online_Compilation/README.md)
 ## 本地编译 ：
 #### 环境安装：
 ```sh
