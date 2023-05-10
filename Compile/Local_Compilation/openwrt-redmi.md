@@ -108,7 +108,10 @@ make menuconfig
 ```
 ###### 下载dll库:
 ```sh
-make download -j$(nproc) V=s
+make download -j$(nproc)
+```
+```sh
+make download -j$(nproc) V=s  #显示信息
 ```
 ###### 编译源码:
 ```sh
