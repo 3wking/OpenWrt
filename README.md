@@ -1,11 +1,7 @@
 # OpenWrt
 ## 在线编译 ：
 #### 在线编译教程：
-* [在线编译](https://supes.top/)
-* [编译插件](https://raw.iqiq.io/3wking/OpenWrt/main/Supes/app)
-* [ARM初始化脚本](https://github.com/3wking/Private/blob/main/OpenWrt/config/arm_shell.md)
-* [X86初始化脚本](https://github.com/3wking/Private/blob/main/OpenWrt/config/x86_shell.md)
-
+* [编译插件](https://github.com/3wking/OpenWrt/blob/main/Compile/Online_Compilation/README.md)
 ## 本地编译 ：
 #### 环境安装：
 ```sh
