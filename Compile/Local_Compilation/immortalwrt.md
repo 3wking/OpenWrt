@@ -140,7 +140,6 @@ option lang auto 改成 option lang zh_cn
 定制shell登陆后的欢迎信息：
 定制网址：http://patorjk.com/software/taag/#p=display&f=Big%20Money-nw&t=3WKING
 目录：/immortalwrt/package/base-files/files/etc/banner：
-
 ```
 ```
  $$$$$$\  $$\      $$\ $$\   $$\ $$$$$$\ $$\   $$\  $$$$$$\  
