@@ -14,9 +14,9 @@ wget -O - https://raw.iqiq.io/3wking/OpenWrt/main/Compile/env.sh | bash
 * [OpenWrt插件名](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Pluginqa_Name.txt)
 * [OpenWrt插件管理](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Plug-ina_Manager.txt)
 #### 编译教程：
-* [LEDE](https://3wking.github.io/3wking/OpenWrt/Compile/LEDE.md)
-* [immortalwrt](https://3wking.github.io/3wking/OpenWrt/main/immortalwrt.md)
-* [openwrt-redmi](https://3wking.github.io/3wking/OpenWrt/Compile/openwrt-redmi.md)
+* [LEDE](https://github.com/3wking/OpenWrt/blob/main/Compile/LEDE.md)
+* [immortalwrt](https://github.com/3wking/OpenWrt/blob/main/Compile/immortalwrt.md)
+* [openwrt-redmi](https://github.com/3wking/OpenWrt/blob/main/Compile/openwrt-redmi.md)
 
 ## Friendlywrt ：
 ##### 精简修改friendlywrt
