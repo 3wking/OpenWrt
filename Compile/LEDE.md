@@ -18,6 +18,11 @@ useradd admin
 ```sh
 passwd admin
 ```
+###### 创建用户和密码:
+```sh
+useradd admin && echo 123456 | passwd admin --stdin		#密码：123456 
+```
+
 ###### 添加权限:
 ```
 找到以下文件 /etc/sudoers 
