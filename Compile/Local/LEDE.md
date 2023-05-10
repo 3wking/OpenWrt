@@ -18,6 +18,10 @@ useradd admin
 ```sh
 passwd admin
 ```
+###### 删除用户:
+```sh
+userdel -r admin
+```	
 ###### 创建用户和密码:
 ```sh
 useradd admin &&(echo admin:123456 | chpasswd)  #密码：123456 
