@@ -19,7 +19,7 @@ passwd admin
 ```
 ###### 添加权限:
 ```sh
-sed -i '/root\tALL=(ALL:ALL) ALL/a\admin\tALL=(ALL:ALL) ALL' /etc/sudoers
+sed -i '/root\tALL=(ALL:ALL) ALL/a\admin\tALL=(ALL) NOPASSWD:ALL' /etc/sudoers
 ```
 ```
 找到以下文件 /etc/sudoers 
