@@ -18,6 +18,10 @@ useradd admin
 ```sh
 passwd admin
 ```
+###### 创建用户和密码:
+```sh
+useradd admin && echo 123456 | passwd admin --stdin		#密码：123456 
+```
 ###### 添加权限:
 ```sh
 sed -i '/root\tALL=(ALL:ALL) ALL/a\admin\tALL=(ALL) NOPASSWD:ALL' /etc/sudoers
