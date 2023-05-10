@@ -46,7 +46,7 @@ sudo add-apt-repository ppa:npalix/coccinelle
 echo "deb http://ppa.launchpad.net/npalix/coccinelle/ubuntu focal main" > /etc/apt/sources.list.d/npalix-ubuntu-coccinelle-focal.list
 echo "#deb-src http://ppa.launchpad.net/npalix/coccinelle/ubuntu focal main" >> /etc/apt/sources.list.d/npalix-ubuntu-coccinelle-focal.list
 ```
-#### 编译
+#### 源码编译
 ###### 进入用户:
 ```sh
 su admin
@@ -109,7 +109,7 @@ make -j1 V=s	# 单核编译(第一次)
 make -j$(($(nproc) + 1)) V=s	# 多核编译(第2次)
 ```
 
-#### 额外修改：
+#### 额外修改
 ###### 添加密码:
 ```sh
 echo "root:$1$Ob2V/c3A$HdzeMqZZCxfbG.6X8PjL..:19036:0:99999:7:::" >> /openwrt-redmi-ax3000/package/base-files/files/etc/shadow
