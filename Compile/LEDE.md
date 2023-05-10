@@ -1,5 +1,6 @@
 # 编译LEDE
 ## PVE编译OpenWRT
+#### liunx环境
 ###### 开启ssh:
 ```sh
 sed -i 's/^#Port 22/Port 22/' /etc/ssh/sshd_config
@@ -34,8 +35,9 @@ sudo apt-get update
 ```
 ######## 安装环境:
 ```sh
-sudo apt-get update && sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf
+sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf
 ```
+#### 源码编译
 ###### 进入用户:
 ```sh
 su admin
@@ -50,6 +52,9 @@ sudo chmod 777 lede
 ```sh
 git clone https://github.com/coolsnowwolf/lede
 ```
+```sh
+git clone -b <分支> https://github.com/coolsnowwolf/lede
+```
 ###### 添加其他插件源:
 ```sh
 echo "src-git small8 https://github.com/kenzok8/small-package" >> /lede/feeds.conf.default
@@ -57,6 +62,10 @@ echo "src-git small8 https://github.com/kenzok8/small-package" >> /lede/feeds.co
 ###### 进入目录:
 ```sh
 cd / && cd lede
+```
+###### 更新源码:
+```sh
+git pull
 ```
 ###### 更新插件源:
 ```sh
@@ -81,7 +90,7 @@ make -j1 V=s	# 单核编译(第一次)
 make -j$(($(nproc) + 1)) V=s	# 多核编译(第2次)
 ```
 
-## 额外修改：
+## 额外修改
 ###### 添加密码:
 ```sh
 echo "root:$1$Ob2V/c3A$HdzeMqZZCxfbG.6X8PjL..:19036:0:99999:7:::" >> /lede/package/base-files/files/etc/shadow
