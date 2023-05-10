@@ -23,7 +23,7 @@ passwd admin
 找到以下文件 /etc/sudoers 
 找到 root	ALL=(ALL:ALL) ALL
 后面加入一行，写入刚才你建立的用户名：
-admin ALL=(ALL:ALL) ALL
+admin ALL=(ALL) NOPASSWD:ALL
 ```
 ######## 命令:
 ```sh
