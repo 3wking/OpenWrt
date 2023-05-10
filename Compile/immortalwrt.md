@@ -18,15 +18,14 @@ useradd admin
 passwd admin
 ```
 ###### 添加权限:
+```sh
+sed -i '/root\tALL=(ALL:ALL) ALL/a\admin\tALL=(ALL:ALL) ALL' /etc/sudoers
+```
 ```
 找到以下文件 /etc/sudoers 
 找到 root	ALL=(ALL:ALL) ALL
 后面加入一行，写入刚才你建立的用户名：
 admin ALL=(ALL:ALL) ALL
-```
-######## 命令:
-```sh
-sed -i '/root\tALL=(ALL:ALL) ALL/a\admin\tALL=(ALL:ALL) ALL' /etc/sudoers
 ```
 ###### 更新系统:
 ```sh
@@ -43,6 +42,7 @@ apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison bu
 		python3-pyelftools qemu-utils quilt re2c rsync scons squashfs-tools subversion swig texinfo uglifyjs \
 		unzip vim wget xmlto xxd zlib1g-dev
 ```
+#### 源码编译
 ###### 进入用户:
 ```sh
 su admin
@@ -61,6 +61,10 @@ sudo chmod 777 immortalwrt
 ```sh
 git clone https://github.com/coolsnowwolf/lede
 ```
+```sh
+git clone -b <分支> https://github.com/coolsnowwolf/lede
+```
+
 ###### 添加其他插件源:
 ```sh
 echo "src-git small8 https://github.com/kenzok8/small-package" >> /immortalwrt/feeds.conf.default
@@ -68,6 +72,10 @@ echo "src-git small8 https://github.com/kenzok8/small-package" >> /immortalwrt/f
 ###### 进入目录:
 ```sh
 cd / && cd immortalwrt
+```
+###### 更新源码:
+```sh
+git pull
 ```
 ###### 更新插件源:
 ```sh
