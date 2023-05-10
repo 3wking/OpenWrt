@@ -34,7 +34,11 @@ admin ALL=(ALL) NOPASSWD:ALL
 ```
 ###### 更新系统:
 ```sh
-sudo apt-get update
+sudo apt update -y
+```
+###### 更新已有软件:
+```sh
+sudo apt full-upgrade -y
 ```
 ######## 安装环境:
 ```sh
