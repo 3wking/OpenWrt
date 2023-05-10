@@ -14,9 +14,14 @@ reboot
 ```sh
 useradd admin
 ```
+
 ###### 创建密码:
 ```sh
 passwd admin
+```
+###### 创建用户和密码:
+```sh
+useradd admin && echo 123456 | passwd admin --stdin		#密码：123456 
 ```
 ###### 添加权限:
 ```sh
