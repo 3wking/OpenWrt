@@ -1,6 +1,6 @@
 # OpenWrt
 ## 在线编译 ：
-#### 
+#### 在线编译教程：
 * [在线编译](https://supes.top/)
 * [编译插件](https://raw.iqiq.io/3wking/OpenWrt/main/Supes/app)
 * [ARM初始化脚本](https://github.com/3wking/Private/blob/main/OpenWrt/config/arm_shell.md)
@@ -9,14 +9,14 @@
 ## 本地编译 ：
 #### 环境安装：
 ```sh
-wget -O - https://raw.iqiq.io/3wking/OpenWrt/main/Compile/env.sh | bash
+wget -O - https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Local_Compilation/env.sh | bash
 ```
-* [OpenWrt插件名](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Pluginqa_Name.txt)
-* [OpenWrt插件管理](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Plug-ina_Manager.txt)
-#### 编译教程：
-* [LEDE](https://github.com/3wking/OpenWrt/blob/main/Compile/LEDE.md)
-* [immortalwrt](https://github.com/3wking/OpenWrt/blob/main/Compile/immortalwrt.md)
-* [openwrt-redmi](https://github.com/3wking/OpenWrt/blob/main/Compile/openwrt-redmi.md)
+* [OpenWrt插件名](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Local_Compilation/Pluginqa_Name.txt)
+* [OpenWrt插件管理](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Local_Compilation/Plug-ina_Manager.txt)
+#### 本地编译教程：
+* [LEDE](https://github.com/3wking/OpenWrt/tree/main/Compile/Local_Compilation//LEDE.md)
+* [immortalwrt](https://github.com/3wking/OpenWrt/tree/main/Compile/Local_Compilation/immortalwrt.md)
+* [openwrt-redmi](https://github.com/3wking/OpenWrt/tree/main/Compile/Local_Compilation//openwrt-redmi.md)
 
 ## Friendlywrt ：
 ##### 精简修改friendlywrt
