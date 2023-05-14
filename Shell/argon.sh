@@ -24,7 +24,7 @@ if [ $country_code = "CN" ]; then
 	fi
 fi
 # 检查
-Check() (
+function Check() {
 	echo -e "\r\n${GREEN_COLOR}正在检查可用空间 ...${RES}"
 	ROOT_SPACE=$(df -m /www | awk 'END{print $4}')
 	if [ $ROOT_SPACE -lt 1 ]; then
@@ -43,9 +43,9 @@ Check() (
 		#安装依赖
 		
 	fi
-)
+}
 #下载
-Download() (
+function Download() {
 	echo -e "\r\n${GREEN_COLOR}下载软件包 ...${RES}\r\n"
 	# 获取软件包信息
 	curl -sk --connect-timeout 10 "https://api.github.com/repos/3wking/OpenWrt/contents/luci-theme/argon?ref=main" | grep "download_url" | grep "argon" > $dir/releases.txt
@@ -73,16 +73,16 @@ Download() (
 		rm -rf $dir
 		exit 1
 	fi
-)
-
-Install() (
-	# 安装
+}
+# 安装
+function Install() {
+	
 	echo -e "\r\n${GREEN_COLOR}安装软件包 ...${RES}\r\n"
 	opkg install $dir/luci-theme-argon*.ipk
 	opkg install $dir/luci-app-argon-config*.ipk
 	rm -rf $dir /tmp/luci-*
 	echo -e "\r\n${GREEN_COLOR}安装完成!${RES}\r\n"
-)
+}
 
 Check
 if [ $? -eq 0 ]; then
