@@ -28,7 +28,7 @@ if [ $country_code = "CN" ]; then
 	fi
 fi
 # 检查
-Check() (
+function Check() {
 	echo -e "\r\n${GREEN_COLOR}正在检查可用空间 ...${RES}"
 	ROOT_SPACE=$(df -m /etc | awk 'END{print $4}')
 	if [ $ROOT_SPACE -lt 15 ]; then
@@ -42,9 +42,9 @@ Check() (
 		echo -e "${RED_COLOR}错误! \"$platform\" 平台当前不受支持.${RES}\r\n"
 		exit 1;
 	fi
-)
+}
 #下载
-Download() (
+function Download() {
 	echo -e "\r\n${GREEN_COLOR}下载软件包 ...${RES}\r\n"
 	# 获取 dev 信息
 	curl -sk --connect-timeout 10 "https://api.github.com/repos/vernesong/OpenClash/contents/master/dev?ref=core" | grep "download_url" | grep "$cpu" > releases.txt
@@ -95,10 +95,9 @@ Download() (
 		rm -rf $dir
 		exit 1
 	fi
-)
-
-Install() (
-	# 安装
+}
+#安装
+function Install() {
 	Core="/etc/openclash/core"
 	echo -e "\r\n${GREEN_COLOR}安装内核中 ...${RES}\r\n"
 	tar -zxf dev*.gz -O > ${Core}/clash && chmod 0755 ${Core}/clash
@@ -106,7 +105,7 @@ Install() (
 	tar -zxf meta*.gz  -O > ${Core}/clash_meta && chmod 0755 ${Core}/clash_meta
 	rm -rf $dir
 	echo -e "\r\n${GREEN_COLOR}安装内核完成!${RES}\r\n"
-)
+}
 
 Check
 if [ $? -eq 0 ]; then

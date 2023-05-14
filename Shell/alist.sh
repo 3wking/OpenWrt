@@ -83,9 +83,8 @@ function Download() {
 		exit 1
 	fi
 }
-
+# 安装
 function Install() {
-	# 安装
 	echo -e "\r\n${GREEN_COLOR}安装软件包 ...${RES}\r\n"
 	opkg install alist*.ipk
 	opkg install luci-app*.ipk
