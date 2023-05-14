@@ -25,7 +25,7 @@ if [ $country_code = "CN" ]; then
 	fi
 fi
 # 检查
-Check() (
+function Check() {
 	echo -e "\r\n${GREEN_COLOR}正在检查可用空间 ...${RES}"
 	ROOT_SPACE=$(df -m /usr | awk 'END{print $4}')
 	if [ $ROOT_SPACE -lt 5 ]; then
@@ -43,9 +43,9 @@ Check() (
 		#opkg update
 		#安装依赖
 	fi
-)
+}
 #下载
-Download() (
+function Download() {
 	echo -e "\r\n${GREEN_COLOR}下载软件包 ...${RES}\r\n"
 	# 获取软件包信息
 	curl -sk --connect-timeout 10 "https://api.github.com/repos/messense/aliyundrive-webdav/releases" | grep "browser_download_url" | grep "ipk"> releases.txt
@@ -81,9 +81,9 @@ Download() (
 		rm -rf $dir
 		exit 1
 	fi
-)
+}
 
-Install() (
+function Install() {
 	# 安装
 	echo -e "\r\n${GREEN_COLOR}安装软件包 ...${RES}\r\n"
 	opkg install aliyundrive-webdav*.ipk
@@ -91,7 +91,7 @@ Install() (
 	opkg install luci-i18n*.ipk
 	rm -rf $dir /tmp/luci-*
 	echo -e "\r\n${GREEN_COLOR}完成!${RES}\r\n"
-)
+}
 
 
 Check
