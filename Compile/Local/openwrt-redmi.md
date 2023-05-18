@@ -51,18 +51,15 @@ sudo apt install build-essential clang flex g++ gawk gcc-multilib gettext \
   git libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev \
   coccinelle
 ```
-###### 安装add-apt-repository
+###### 安装<add-apt-repository>
 ```sh
 apt-get install software-properties-common
 ```
-###### coccinelle：
+###### 添加<coccinelle>源
 ```sh
 sudo add-apt-repository ppa:npalix/coccinelle
 ```
-```sh
-echo "deb http://ppa.launchpad.net/npalix/coccinelle/ubuntu focal main" > /etc/apt/sources.list.d/npalix-ubuntu-coccinelle-focal.list
-echo "#deb-src http://ppa.launchpad.net/npalix/coccinelle/ubuntu focal main" >> /etc/apt/sources.list.d/npalix-ubuntu-coccinelle-focal.list
-```
+
 #### 源码编译
 ###### 进入用户:
 ```sh
