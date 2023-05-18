@@ -49,7 +49,7 @@ sudo apt full-upgrade -y
 ```sh
 sudo apt install build-essential clang flex g++ gawk gcc-multilib gettext \
   git libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev \
-  coccinelle
+  curl coccinelle
 ```
 ###### 安装<add-apt-repository>
 ```sh
