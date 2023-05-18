@@ -51,6 +51,10 @@ sudo apt install build-essential clang flex g++ gawk gcc-multilib gettext \
   git libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev \
   coccinelle
 ```
+###### 安装add-apt-repository
+```sh
+apt-get install software-properties-common
+```
 ###### coccinelle：
 ```sh
 sudo add-apt-repository ppa:npalix/coccinelle
