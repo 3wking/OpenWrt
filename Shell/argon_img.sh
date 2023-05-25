@@ -3,6 +3,16 @@ RED_COLOR='\e[1;31m' #红色
 GREEN_COLOR='\e[1;32m' #绿色
 RES='\e[0m' #尾
 
+#设置GitHub加速下载
+ip_info=$(curl -sk https://ip.cooluc.com)
+country_code=$(echo $ip_info | sed -r 's/.*country_code":"([^"]*).*/\1/')
+if [ $country_code = "CN" ]; then
+	google_status=$(curl -I -4 -m 3 -o /dev/null -s -w %{http_code} http://www.google.com/generate_204)
+	if [ ! $google_status = "204" ];then
+		mirror="https://github.cooluc.com/"
+	fi
+fi
+
 # 检查
 function Check() {
 	echo -e "\r\n${GREEN_COLOR}正在检查可用空间 ...${RES}"
@@ -15,7 +25,7 @@ function Check() {
 #安装
 function Install() {
 echo -e "\r\n${GREEN_COLOR}安装<argon_img>图片${RES}\r\n"
-img="https://raw.iqiq.io/3wking/OpenWrt/main/IMG/Yamato_Kancolle.mp4"
+img=$mirror"https://raw.iqiq.io/3wking/OpenWrt/main/IMG/Yamato_Kancolle.mp4"
 rm -f /www/luci-static/argon/background/*
 if [ $? -eq 0 ]; then
 	echo -e "${GREEN_COLOR}正在下载 $img ...${RES}"
