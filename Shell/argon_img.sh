@@ -25,11 +25,11 @@ function Check() {
 #安装
 function Install() {
 echo -e "\r\n${GREEN_COLOR}安装<argon_img>图片${RES}\r\n"
-img=$mirror"https://raw.iqiq.io/3wking/OpenWrt/main/IMG/Yamato_Kancolle.mp4"
+img="https://raw.githubusercontent.com/3wking/OpenWrt/main/IMG/Yamato_Kancolle.mp4"
 rm -f /www/luci-static/argon/background/*
 if [ $? -eq 0 ]; then
 	echo -e "${GREEN_COLOR}正在下载 $img ...${RES}"
-	curl --connect-timeout 30 -m 600 -#kLo /www/luci-static/argon/background/Yamato_Kancolle.mp4 "${img}"
+	curl --connect-timeout 30 -m 600 -#kLo /www/luci-static/argon/background/Yamato_Kancolle.mp4 $mirror$img
 	if [ $? -ne 0 ]; then
 		echo -e "${RED_COLOR}下载 $img 失败.${RES}\r\n"
 		exit 1
