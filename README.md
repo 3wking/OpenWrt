@@ -7,7 +7,7 @@
 ```sh
 wget -O - https://ghproxy.com/https://raw.githubusercontent.com/3wking/OpenWrt/main/Compile/Local_Compilation/env.sh | bash
 ```
-* [OpenWrt插件名](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Local/Pluginqa_Name.txt)
+* [OpenWrt插件名](Compile/Local/Pluginqa_Name.txt)
 * [OpenWrt插件管理](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Local/Plug-ina_Manager.txt)
 #### 本地编译教程：
 * [LEDE](Compile/Local/LEDE.md)
