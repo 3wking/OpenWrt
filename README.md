@@ -10,9 +10,9 @@ wget -O - https://ghproxy.com/https://raw.githubusercontent.com/3wking/OpenWrt/m
 * [OpenWrt插件名](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Local/Pluginqa_Name.txt)
 * [OpenWrt插件管理](https://raw.iqiq.io/3wking/OpenWrt/main/Compile/Local/Plug-ina_Manager.txt)
 #### 本地编译教程：
-* [LEDE](https://github.com/3wking/OpenWrt/tree/main/Compile/Local/LEDE.md)
-* [immortalwrt](https://github.com/3wking/OpenWrt/tree/main/Compile/Local/immortalwrt.md)
-* [openwrt-redmi](https://github.com/3wking/OpenWrt/tree/main/Compile/Local/openwrt-redmi.md)
+* [LEDE](Compile/Local/LEDE.md)
+* [immortalwrt](Compile/Local/immortalwrt.md)
+* [openwrt-redmi](Compile/Local/openwrt-redmi.md)
 
 ## Friendlywrt ：
 ##### 精简修改friendlywrt
