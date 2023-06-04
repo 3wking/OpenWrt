@@ -8,7 +8,7 @@
 ```
 ###### TCC网络加速
 ```sh
--luci-app-gpsysupgrade -luci-app-upnp -luci-app-advanced luci-app-ramfree luci-app-fullconenat luci-app-ddns luci-app-v2ray-server luci-app-ttyd luci-app-v2raya luci-app-turboacc luci-app-store
+-luci-app-gpsysupgrade -luci-app-upnp -luci-app-advanced luci-app-ramfree luci-app-fullconenat luci-app-ddns luci-app-turboacc luci-app-v2ray-server luci-app-ttyd luci-app-v2raya luci-app-store
 ```
 ###### Docker
 ```sh
