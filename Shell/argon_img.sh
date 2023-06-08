@@ -30,7 +30,7 @@ img="https://raw.githubusercontent.com/3wking/AList/main/img/img_16.jpg"
 rm -f /www/luci-static/argon/background/*
 if [ $? -eq 0 ]; then
 	echo -e "${GREEN_COLOR}正在下载 $img ...${RES}"
-	curl --connect-timeout 30 -m 600 -#kLo /www/luci-static/argon/background/Yamato_Kancolle.mp4 $mirror$img
+	curl --connect-timeout 30 -m 600 -#kLO $mirror$img
 	if [ $? -ne 0 ]; then
 		echo -e "${RED_COLOR}下载 $img 失败.${RES}\r\n"
 		exit 1
@@ -42,7 +42,10 @@ else
 fi
 }
 
+dir="/www/luci-static/argon/background"
+(cd $dir &&  (
 Check
 if [ $? -eq 0 ]; then
 	Install
 fi
+))
