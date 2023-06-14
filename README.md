@@ -45,3 +45,7 @@ curl -k  https://raw.iqiq.io/3wking/OpenWrt/main/Shell/argon_img.sh | bash
 ```sh
 curl -k  https://raw.iqiq.io/3wking/OpenWrt/main/Shell/argon.sh | bash
 ```
+##### 小Q助手_安装
+```sh
+curl -k  https://raw.iqiq.io/3wking/OpenWrt/main/Shell/Assistant.sh | bash
+```
