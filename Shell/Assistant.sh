@@ -65,8 +65,8 @@ function Install() {
 	else
 	rm -rf "$dir"
 	fi
-	tar -zxvf 12*.tar.gz -C $dir
-	rm -rf "12*.tar.gz"
+	tar -zxvf Assistant*.tar.gz -C $dir
+	rm -rf "Assistant*.tar.gz"
 	if [ $? -ne 0 ]; then
 	echo -e "${RED_COLOR}解压Assistant失败.${RES}\r\n"
 	exit 1
