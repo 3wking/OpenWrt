@@ -65,39 +65,34 @@ function Install() {
 	else
 	rm -rf "$dir"
 	fi
-	tar -zxvf Assistant*.tar.gz -C $dir
+	tar -zxvf Assistant*.gz -C $dir
 	rm -rf "Assistant*.tar.gz"
 	if [ $? -ne 0 ]; then
 	echo -e "${RED_COLOR}解压Assistant失败.${RES}\r\n"
 	exit 1
 	fi
 	if [ ! -f "$dir/cq_config.yml" ]; then
-	echo "请输入你的AccessKeyID："
-	read AccessKeyID
-	echo "请输入你的AccessKey："
-	read AccessKey
-	echo "请输入你的域名："
-	read DomainName
-	echo "请输入你的子域名："
-	read RR
+	read -p "请输入你的AccessKeyID >>>: " AccessKeyID
+	read -p "请输入你的AccessKey >>>: " AccessKey
+	read -p "请输入你的域名 >>>: " DomainName
+	read -p "请输入你的子域名 >>>: " RR
 	echo "AccessKeyID=${AccessKeyID}" > $dir/cq_config.yml
 	echo "AccessKey=${AccessKey}" >> $dir/cq_config.yml
 	echo "DomainName=${DomainName}" >> $dir/cq_config.yml
 	echo "RR=${RR}" >> $dir/cq_config.yml
 	fi
 	if [ -f "/etc/init.d/Assistant" ]; then
-	echo 1
 	rm -rf "/etc/init.d/Assistant"
 	fi
 	ln -s $dir/Assistant /etc/init.d/Assistant
 	echo -e "\r\n${GREEN_COLOR}小Q助安装完成!${RES}\r\n"
-	echo "启动服务："
+	echo "${GREEN_COLOR}启动服务：${RES}"
 	echo "/etc/init.d/Assistant start"
-	echo "停止服务："
+	echo "{GREEN_COLOR}停止服务：${RES}"
 	echo "/etc/init.d/Assistant stop"
-	echo "开机自启："
+	echo "{GREEN_COLOR}开机自启：${RES}"
 	echo "/etc/init.d/Assistant enable"
-	echo "取消自启："
+	echo "{GREEN_COLOR}取消自启：${RES}"
 	echo "/etc/init.d/Assistant disable"
 }
 
