@@ -61,9 +61,9 @@ function Install() {
 	dir="/usr/share/Assistant"
 	echo -e "\r\n${GREEN_COLOR}安装小Q助手 ...${RES}\r\n"
 	if [ ! -d "$dir" ];then
-	mkdir "$dir"
+	mkdir $dir
 	else
-	rm -rf "$dir"
+	rm -rf $dir
 	fi
 	tar -zxf $tmp/Assistant*.gz -C $dir
 	rm -rf $tmp/"Assistant*.tar.gz"
