@@ -88,11 +88,11 @@ function Install() {
 	echo -e "\r\n${GREEN_COLOR}小Q助安装完成!${RES}\r\n"
 	echo -e "${GREEN_COLOR}启动服务：${RES}"
 	echo "/etc/init.d/Assistant start"
-	echo -e "{GREEN_COLOR}停止服务：${RES}"
+	echo -e "${GREEN_COLOR}停止服务：${RES}"
 	echo "/etc/init.d/Assistant stop"
-	echo -e "{GREEN_COLOR}开机自启：${RES}"
+	echo -e "${GREEN_COLOR}开机自启：${RES}"
 	echo "/etc/init.d/Assistant enable"
-	echo -e "{GREEN_COLOR}取消自启：${RES}"
+	echo -e "${GREEN_COLOR}取消自启：${RES}"
 	echo "/etc/init.d/Assistant disable"
 }
 
