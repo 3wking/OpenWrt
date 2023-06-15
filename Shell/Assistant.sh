@@ -65,8 +65,8 @@ function Install() {
 	else
 	rm -rf "$dir"
 	fi
-	tar -zxvf Assistant*.gz -C $dir
-	rm -rf "Assistant*.tar.gz"
+	tar -zxf $tmp/Assistant*.gz -C $dir
+	rm -rf $tmp/"Assistant*.tar.gz"
 	if [ $? -ne 0 ]; then
 	echo -e "${RED_COLOR}解压Assistant失败.${RES}\r\n"
 	exit 1
@@ -86,13 +86,13 @@ function Install() {
 	fi
 	ln -s $dir/Assistant /etc/init.d/Assistant
 	echo -e "\r\n${GREEN_COLOR}小Q助安装完成!${RES}\r\n"
-	echo "${GREEN_COLOR}启动服务：${RES}"
+	echo -e "${GREEN_COLOR}启动服务：${RES}"
 	echo "/etc/init.d/Assistant start"
-	echo "{GREEN_COLOR}停止服务：${RES}"
+	echo -e "{GREEN_COLOR}停止服务：${RES}"
 	echo "/etc/init.d/Assistant stop"
-	echo "{GREEN_COLOR}开机自启：${RES}"
+	echo -e "{GREEN_COLOR}开机自启：${RES}"
 	echo "/etc/init.d/Assistant enable"
-	echo "{GREEN_COLOR}取消自启：${RES}"
+	echo -e "{GREEN_COLOR}取消自启：${RES}"
 	echo "/etc/init.d/Assistant disable"
 }
 
